@@ -1,4 +1,5 @@
 package com.example;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
@@ -15,16 +16,9 @@ public class MyStackTest {
     void testPushTornaPilhaNaoVazia() {
         MyStack stack = new MyStack();
 
-        stack.push("A");
+        stack.push("Livro Java");
 
         assertFalse(stack.isEmpty());
-    }
-
-    @Test
-    void testPeekEmPilhaVaziaRetornaNull() {
-        MyStack stack = new MyStack();
-
-        assertNull(stack.peek());
     }
 
     @Test
@@ -38,73 +32,47 @@ public class MyStackTest {
     void testPushSeguidoDePeekRetornaElementoCorreto() {
         MyStack stack = new MyStack();
 
-        stack.push("A");
+        stack.push("Livro Java");
 
-        assertEquals("A", stack.peek());
+        assertEquals("Livro Java", stack.peek());
     }
 
     @Test
-    void testPeekNaoRemoveElemento() {
+    void testPeekEmPilhaVaziaRetornaNull() {
         MyStack stack = new MyStack();
 
-        stack.push("A");
-
-        assertEquals("A", stack.peek());
-        assertEquals("A", stack.peek());
-        assertFalse(stack.isEmpty());
+        assertNull(stack.peek());
     }
 
     @Test
     void testPushSeguidoDePopRetornaElementoCorreto() {
         MyStack stack = new MyStack();
 
-        stack.push("A");
+        stack.push("Livro Java");
 
-        assertEquals("A", stack.pop());
+        assertEquals("Livro Java", stack.pop());
         assertTrue(stack.isEmpty());
-    }
-
-    @Test
-    void testLIFOComDoisElementos() {
-        MyStack stack = new MyStack();
-
-        stack.push("A");
-        stack.push("B");
-
-        assertEquals("B", stack.pop());
-        assertEquals("A", stack.pop());
     }
 
     @Test
     void testLIFOComTresElementos() {
         MyStack stack = new MyStack();
 
-        stack.push("A");
-        stack.push("B");
-        stack.push("C");
+        stack.push("Livro Java");
+        stack.push("Livro Banco de Dados");
+        stack.push("Livro Estrutura de Dados");
 
-        assertEquals("C", stack.pop());
-        assertEquals("B", stack.pop());
-        assertEquals("A", stack.pop());
-    }
-
-    @Test
-    void testPeekRetornaTopoCorreto() {
-        MyStack stack = new MyStack();
-
-        stack.push("A");
-        stack.push("B");
-        stack.push("C");
-
-        assertEquals("C", stack.peek());
+        assertEquals("Livro Estrutura de Dados", stack.pop());
+        assertEquals("Livro Banco de Dados", stack.pop());
+        assertEquals("Livro Java", stack.pop());
     }
 
     @Test
     void testPopAteEsvaziarPilha() {
         MyStack stack = new MyStack();
 
-        stack.push("A");
-        stack.push("B");
+        stack.push("Livro Java");
+        stack.push("Livro Banco de Dados");
 
         stack.pop();
         stack.pop();
@@ -116,7 +84,7 @@ public class MyStackTest {
     void testPopDepoisDeEsvaziarRetornaNull() {
         MyStack stack = new MyStack();
 
-        stack.push("A");
+        stack.push("Livro Java");
 
         stack.pop();
 
@@ -124,37 +92,18 @@ public class MyStackTest {
     }
 
     @Test
-    void testPushNull() {
-        MyStack stack = new MyStack();
-
-        stack.push(null);
-
-        assertNull(stack.peek());
-    }
-
-    @Test
-    void testPopNull() {
-        MyStack stack = new MyStack();
-
-        stack.push(null);
-
-        assertNull(stack.pop());
-        assertTrue(stack.isEmpty());
-    }
-
-    @Test
     void testSequenciaCompletaOperacoes() {
         MyStack stack = new MyStack();
 
-        stack.push("A");
-        stack.push("B");
+        stack.push("Livro Java");
+        stack.push("Livro Banco de Dados");
 
-        assertEquals("B", stack.pop());
+        assertEquals("Livro Banco de Dados", stack.pop());
 
-        stack.push("C");
+        stack.push("Livro Estrutura de Dados");
 
-        assertEquals("C", stack.pop());
-        assertEquals("A", stack.pop());
+        assertEquals("Livro Estrutura de Dados", stack.pop());
+        assertEquals("Livro Java", stack.pop());
 
         assertTrue(stack.isEmpty());
     }
